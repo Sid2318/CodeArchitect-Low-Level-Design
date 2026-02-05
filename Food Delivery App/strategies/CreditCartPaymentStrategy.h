@@ -7,15 +7,19 @@
 #include <iomanip>
 using namespace std;
 
-class CreditCardPaymentStrategy : public PaymentStrategy {
+class CreditCardPaymentStrategy : public PaymentStrategy
+{
 private:
     string cardNumber;
+
 public:
-    CreditCardPaymentStrategy(const string& card) {
+    CreditCardPaymentStrategy(const string &card)
+    {
         cardNumber = card;
     }
 
-    void pay(double amount) override {
+    void pay(double amount) override
+    {
         cout << "Paid ₹" << amount << " using Credit Card (" << cardNumber << ")" << endl;
     }
 };

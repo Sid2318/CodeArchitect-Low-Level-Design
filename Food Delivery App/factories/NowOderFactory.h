@@ -7,17 +7,21 @@
 #include "../util/TimeUtils.h"
 using namespace std;
 
-class NowOrderFactory : public OrderFactory {
+class NowOrderFactory : public OrderFactory
+{
 public:
-    Order* createOrder(User* user, Cart* cart, Restaurant* restaurant, const vector<MenuItem>& menuItems,
-                       PaymentStrategy* paymentStrategy, double totalCost, const string& orderType) override {
-        Order* order = nullptr;
-        if (orderType == "Delivery") {
+    Order *createOrder(User *user, Cart *cart, Restaurant *restaurant, const vector<MenuItem> &menuItems,
+                       PaymentStrategy *paymentStrategy, double totalCost, const string &orderType) override
+    {
+        Order *order = nullptr;
+        if (orderType == "Delivery")
+        {
             auto deliveryOrder = new DeliveryOrder();
             deliveryOrder->setUserAddress(user->getAddress());
             order = deliveryOrder;
         }
-        else {
+        else
+        {
             auto pickupOrder = new PickupOrder();
             pickupOrder->setRestaurantAddress(restaurant->getLocation());
             order = pickupOrder;
